@@ -27,12 +27,14 @@ router.post('/login', function(req, res) {
             return res.status(422).send({errors: [{title: 'User error', detail: "パスワードが異なります"}]})
         }
 
-        const token = jwt.sign({
-            userId: foundUser.id,
-            username: foundUser.username
-          }, config.SECRET, { expiresIn: '1h' });
+        const username = foundUser.username
 
-        return res.json(token)
+        // const token = jwt.sign({
+        //     userId: foundUser.id,
+        //     username: foundUser.username
+        //   }, config.SECRET, { expiresIn: '1h' });
+
+        return res.json(username)
     })
 })
 

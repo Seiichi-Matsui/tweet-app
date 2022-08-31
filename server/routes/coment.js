@@ -20,4 +20,27 @@ router.get('/:comentId', function(req, res) {
     })
 })
 
+router.post('', function(req, res) {
+    const { userName, userComent } = req.body
+
+    if(!userName) {
+        return res.status(422).send({errors: [{title: 'User error', detail: "ユーザー名を入力してください"}]})
+    }
+
+    if(!userComent) {
+        return res.status(422).send({errors: [{title: 'User error', detail: "コメントを入力してください"}]})
+    }
+
+
+    const coment = new Coment({userName, userComent})
+        coment.save(function(err) {
+            if(err) {
+                return res.status(422).send({errors: [{title: 'User error', detail: "エラーが発生しました。もう一度お試しください。"}]})
+            }
+            return res.json({"registerd": true})
+        })
+    })
+    
+
+
 module.exports = router

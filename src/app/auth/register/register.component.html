@@ -17,7 +17,11 @@
                                 <i class="fa fa-twitter"></i>
                             </a>
                         </div>
-                        <form class="register-form">
+                        <form 
+                            class="register-form" 
+                            #registerForm="ngForm"
+                            (ngSubmit)="register(registerForm)">
+
                             <label>ユーザー名</label>
                             <div class="input-group form-group-no-border" [ngClass]="{'input-group-focus':focus===true}">
                             <div class="input-group-prepend">
@@ -26,7 +30,14 @@
                                 </span>
                             </div>
 
-                                <input type="text" class="form-control" placeholder="username" (focus)="focus=true" (blur)="focus=false" >
+
+                                <input 
+                                    ngModel
+                                    name="username"
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="username" 
+                                    required="">
                             </div>
 
                             <label>メールアドレス</label>
@@ -37,7 +48,15 @@
                                 </span>
                                 </div>
 
-                                <input type="text" class="form-control" placeholder="Email" (focus)="focus=true" (blur)="focus=false" >
+
+                                <input 
+                                    ngModel
+                                    name="email"
+                                    type="text" 
+                                    class="form-control" 
+                                    placeholder="Email" 
+                                    required=""
+                                    pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
                             </div>
 
                             <label>パスワード</label>
@@ -47,7 +66,16 @@
                                     <i class="nc-icon nc-key-25"></i>
                                 </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="Password" (focus)="focus1=true" (blur)="focus1=false" >
+
+
+
+                                <input 
+                                    ngModel
+                                    name="password"
+                                    type="password" 
+                                    class="form-control" 
+                                    placeholder="Password" 
+                                    required="">
                             </div>
 
                             <label>パスワード確認</label>
@@ -57,9 +85,22 @@
                                     <i class="nc-icon nc-key-25"></i>
                                 </span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="CheckPassword" (focus)="focus1=true" (blur)="focus1=false" >
+
+
+
+                                <input 
+                                    ngModel
+                                    name="confirmpassword"
+                                    type="password" 
+                                    class="form-control" 
+                                    placeholder="CheckPassword"
+                                    required="">
                             </div>
-                            <button class="btn btn-danger btn-block btn-round">Register</button>
+                            <br>
+                        <div *ngIf="errors && errors.length>0" class="alert alert-danger">
+                            <p *ngFor="let error of errors">{{ error.detail }}</p>
+                        </div>                        
+                            <button [disabled]="!registerForm.valid" class="btn btn-danger btn-block btn-round" type="submit">Register</button>
                         </form>
                     </div>
                     </div>
