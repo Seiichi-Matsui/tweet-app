@@ -6,6 +6,7 @@ const  bodyParser  =  require ( 'body-parser' )
 
 const comentRoutes = require('./routes/coment')
 const userRoutes = require('./routes/user')
+const UserNameRoutes = require('./routes/username')
 
 mongoose.connect(config.DB_URI, {
     useNewUrlParser: true,
@@ -22,8 +23,17 @@ app.use(bodyParser.json())
 
 app.use('/api/v1/coment', comentRoutes)
 app.use('/api/v1/user', userRoutes)
+app.use('/api/v1/userName', UserNameRoutes)
 
 app.get('/coment', function(req, res) {
+    res.json({'success': true})
+})
+
+app.get('/user', function(req, res) {
+    res.json({'success': true})
+})
+
+app.get('/userName', function(req, res) {
     res.json({'success': true})
 })
 

@@ -4,9 +4,10 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { RouterModule, Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: '', component: LandingComponent},
+  { path: 'landing', component: LandingComponent},
   { path: 'login', component: LoginComponent},
   { path: 'register', component: RegisterComponent}
 ];
@@ -19,7 +20,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    FormsModule
   ]
 })
 export class AuthModule { }

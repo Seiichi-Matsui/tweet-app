@@ -10,6 +10,7 @@ import { TweetComponent } from './tweet/tweet.component';
 import { AuthService } from './auth/auth.service';
 import { SharDateService } from './sharDate/sharDate.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
 
   ],
   providers: [

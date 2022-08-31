@@ -7,7 +7,7 @@ const routes: Routes = [];
 @NgModule({
   imports: [
     RouterModule.forRoot(routes),
-    AuthModule
+    AuthModule,
   ],
   exports: [RouterModule]
 })

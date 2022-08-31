@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from './auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,11 +8,15 @@ import { AuthService } from './auth/auth.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit{
-  constructor (){}
+  constructor (
+    private router: Router
+    ){}
 
   auth = AuthService
   
+  
   ngOnInit() {
+    this.router.navigate(['/landing'])
     
   }
 
