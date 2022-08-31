@@ -8,6 +8,9 @@ const comentRoutes = require('./routes/coment')
 const userRoutes = require('./routes/user')
 const UserNameRoutes = require('./routes/username')
 
+
+const path = require('path')
+
 mongoose.connect(config.DB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true
@@ -17,6 +20,7 @@ mongoose.connect(config.DB_URI, {
         fakeDb.initDb()
     }
 )
+
 
 const app = express()
 app.use(bodyParser.json())
@@ -37,8 +41,18 @@ app.get('/userName', function(req, res) {
     res.json({'success': true})
 })
 
+
+const appPath = path.join( __dirname, '..', 'dist', 'tweet-app')
+    app.use(express.static(appPath))
+    app.get('*', function(req, res) {
+        res.sendFile(path.resolve(appPath, 'index.html'))
+})
+
 const PORT = process.env.PORT || '3001'
 
 app.listen(PORT, function() {
-    console.log('Running!');
+    console.log('I am running!');
 })
+
+
+    
