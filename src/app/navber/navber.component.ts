@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth/auth.service';
 
 @Component({
   selector: 'app-navber',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavberComponent implements OnInit {
 
-  constructor() { }
+  name = localStorage.getItem('username')
+  constructor(
+    public auth: AuthService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.auth.logout()
   }
 
 }

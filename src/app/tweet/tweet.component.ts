@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentChecked, Component, OnInit } from '@angular/core';
 import { SharDateService } from '../sharDate/sharDate.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { SharDateService } from '../sharDate/sharDate.service';
   templateUrl: './tweet.component.html',
   styleUrls: ['./tweet.component.css']
 })
-export class TweetComponent implements OnInit {
+export class TweetComponent implements OnInit ,AfterContentChecked{
   errors:any = []
   coments:any
   userName:any
@@ -20,6 +20,10 @@ export class TweetComponent implements OnInit {
     this.change()
   }
 
+  ngAfterContentChecked(): void {
+    this.change()
+  }
+  
   change() {
     const comentsObsevable = this.sharDateService.getComent()
     comentsObsevable.subscribe(
@@ -37,11 +41,13 @@ export class TweetComponent implements OnInit {
       this.sharDateService.addComent(comentForm.value.userComent).subscribe(
         
           (result) => {
-              this.change()
+              // this.change()
+              
           },
           (err: HttpErrorResponse) => {
               this.errors = err.error.errors
           }
       )
   }
+
 }
