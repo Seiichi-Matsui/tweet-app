@@ -1,3 +1,3 @@
 <app-navber></app-navber>
-<app-auth></app-auth>
-<app-tweet></app-tweet>
+<app-auth  *ngIf="!auth.isAuthenticated()"></app-auth>
+<app-tweet *ngIf="auth.isAuthenticated()"></app-tweet>

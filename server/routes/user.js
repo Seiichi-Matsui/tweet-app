@@ -29,12 +29,12 @@ router.post('/login', function(req, res) {
 
         const username = foundUser.username
 
-        // const token = jwt.sign({
-        //     userId: foundUser.id,
-        //     username: foundUser.username
-        //   }, config.SECRET, { expiresIn: '1h' });
+        const token = jwt.sign({
+            userId: foundUser.id,
+            username: foundUser.username
+          }, config.SECRET, { expiresIn: '1h' });
 
-        return res.json(username)
+        return res.json([username , token])
     })
 })
 

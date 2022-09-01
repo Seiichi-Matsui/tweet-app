@@ -9,10 +9,10 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit{
   constructor (
-    private router: Router
+    private router: Router,
+    public auth: AuthService
     ){}
 
-  auth = AuthService
   
   
   ngOnInit() {
