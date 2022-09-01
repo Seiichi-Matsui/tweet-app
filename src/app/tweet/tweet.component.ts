@@ -18,6 +18,12 @@ export class TweetComponent implements OnInit {
       
   ngOnInit(): void {
     this.change()
+    const _this = this
+    function reload() {
+      _this.change()
+    }
+  
+    setInterval(reload, 2000);
   }
 
   reload() {
