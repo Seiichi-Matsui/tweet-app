@@ -1,5 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SharDateService } from '../sharDate/sharDate.service';
 
 @Component({
@@ -17,23 +17,8 @@ export class TweetComponent implements OnInit {
     ) { }
       
   ngOnInit(): void {
-    // this.username()
     this.change()
   }
-
-  // username() {
-  //   const userObsevable = this.sharDateService.getUser()
-  //   userObsevable.subscribe(
-  //     (date) => {
-  //       this.userName = date
-  //       console.log(date);
-        
-  //     },
-  //     (err) => {},
-  //     () => {}
-  //   )
-
-  // }
 
   change() {
     const comentsObsevable = this.sharDateService.getComent()
