@@ -20,23 +20,7 @@ export class SharDateService implements OnInit{
         return this.http.get('/api/v1/coment')
     }
 
-    // getUser(): Observable<any> {
-    //     return this.http.get('/api/v1/user/register')
-    // }
-
-
     addComent(coments: string): Observable<any> {
-        // const userObsevable = this.getUser()
-        // userObsevable.subscribe(
-        // (date) => {
-        //     this.user = date
-        //     console.log(date);
-        //     console.log('いけーーーー');
-            
-        // },
-        // (err) => {},
-        // () => {}
-        // )
         console.log(coments);
         
         const name = localStorage.getItem('username')
