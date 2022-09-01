@@ -1,13 +1,12 @@
 const express = require('express')
 const mongoose = require('mongoose')
-const config = require('./config/dev')
+const config = require('./config/index')
 const FakeDb = require('./fake')
 const  bodyParser  =  require ( 'body-parser' )
 
 const comentRoutes = require('./routes/coment')
 const userRoutes = require('./routes/user')
 const UserNameRoutes = require('./routes/username')
-
 
 const path = require('path')
 
@@ -16,8 +15,11 @@ mongoose.connect(config.DB_URI, {
     useUnifiedTopology: true
 }) .then (
     () => {
+
+    if(process.env.NODE_ENV !== 'production') {
         const fakeDb = new FakeDb()
-        fakeDb.initDb()
+        // fakeDb.initDb()
+        }
     }
 )
 
@@ -41,12 +43,17 @@ app.get('/userName', function(req, res) {
     res.json({'success': true})
 })
 
+if(process.env.NODE_ENV === 'production') {
+    const appPath = path.join( __dirname, '..', 'dist', 'tweet-app')
+        app.use(express.static(appPath))
+        app.get('*', function(req, res) {
+            res.sendFile(path.resolve(appPath, 'index.html'))
 
-const appPath = path.join( __dirname, '..', 'dist', 'tweet-app')
-    app.use(express.static(appPath))
-    app.get('*', function(req, res) {
-        res.sendFile(path.resolve(appPath, 'index.html'))
-})
+    })
+} else {
+    console.log(process.env.DB_URI);
+}
+
 
 const PORT = process.env.PORT || '3001'
 
