@@ -1,0 +1,55 @@
+<div class="container top">
+    <div class="input-group mb-3">
+        <form
+            class="register-form" 
+            #comentForm="ngForm">
+
+            <div class="form-group has-success">
+                <input 
+                    ngModel
+                    name="userComent"
+                    required=""
+                    type="text" 
+                    value=""
+                    placeholder="投稿する内容" 
+                    aria-label="投稿内容" 
+                    class="form-control form-control-success"
+                    id="inputSuccess1"
+                    aria-describedby="button-addon2"
+                    >
+            </div>
+
+            <button [disabled]="!comentForm.valid" class="btn btn-outline-success" type="reset" id="button-addon2" (click)="coment(comentForm)">投稿する</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col with g-3 gutters">
+        <br>
+        <div *ngFor="let coment of coments.slice().reverse()">
+            <ul class="container">
+                <li class="row">
+                    <div class="col">
+                        <b>{{ coment.userName }}</b>
+                    </div>
+                    <div class="col-6">
+                        <p>{{ coment.userComent }}</p>
+                    </div>
+                    <div class="col">
+                        <ng-container *ngIf="name === coment.userName">
+                            <button class="btn btn-outline-danger" (click)="comentDelate(coment._id)">削除</button>
+                        </ng-container>
+                    </div>
+
+                </li>
+            </ul>
+            <ul class="container">
+                <p>{{ coment.timeData }}</p>
+            </ul>
+            <hr>
+
+        </div>
+            
+    </div>
+</div>
