@@ -1,3 +1,18 @@
 .top {
-    margin-top: 150px;
+    padding-top: 70px;
+}
+.bottom {
+    padding-bottom: 100px;
+}
+.coment {
+    padding-right: 15px;
+    font-size: 18px;
+}
+.userName {
+    padding-right: 15px;
+    margin: 0;
+}
+.row-userName {
+    display: flex;
+    flex-wrap: wrap;
 }

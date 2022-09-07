@@ -1,10 +1,46 @@
-<div class="container top">
-    <div class="input-group mb-3">
-        <form
-            class="register-form" 
-            #comentForm="ngForm">
+<div class="top" style="background-image: url('./assets/img/login-image.jpg');">
+    <div class="col with g-3 gutters bottom">
+        <br>
+        <div *ngFor="let coment of coments">
+            <ul class="container">
+                <li class="row-userName" [ngClass]="{'justify-content-end' : name === coment.userName}">
+                    <div class="col-2" style="padding: 0;">
+                        <b class="text-nowrap label label-default userName">{{ coment.userName }}</b>
+                    </div>
+                </li>
+            </ul>
+            <ul class="container">
+                <li class="row"  [ngClass]="{'justify-content-end' : name === coment.userName}">
+                    <div class="col" style="padding-left: -15px;">
+                        <p class="label label-default coment">{{ coment.userComent }}</p>
+                    </div>
+                    <div class="col-2">
+                        <ng-container *ngIf="name === coment.userName">
+                            <button class="text-nowrap label label-danger btn-sm" (click)="comentDelate(coment._id)">削除</button>
+                        </ng-container>
+                    </div>
+                
+                </li>
+            </ul>
+            <ul class="container">
+                <li class="row" [ngClass]="{'justify-content-end' : name === coment.userName}">
+                    <p style="color: white;">{{ coment.timeData }}</p>
+                </li>
+            </ul>
+            <hr>
 
-            <div class="form-group has-success">
+        </div>
+            
+    </div>
+</div>
+<div class="container bg-light bg-gradient fixed-bottom" style="padding-top: 16px;">
+        <form
+            class="register-form row" 
+            #comentForm="ngForm"
+            (ngSubmit)="coment(comentForm)"
+            >
+
+            <div class="form-group col-10" id="clearForm" style="padding-right: 0;">
                 <input 
                     ngModel
                     name="userComent"
@@ -18,38 +54,9 @@
                     aria-describedby="button-addon2"
                     >
             </div>
-
-            <button [disabled]="!comentForm.valid" class="btn btn-outline-success" type="reset" id="button-addon2" (click)="coment(comentForm)">投稿する</button>
+            <div class="col-2 d-grid gap-2 d-block" style="padding-left: 0;">
+                <button [disabled]="!comentForm.valid" class="text-nowrap btn btn-outline-success btn-sm" type="submit" id="button-addon2" (click)="clearButton()">投稿</button>
+            </div>
         </form>
-    </div>
 </div>
 
-<div class="row">
-    <div class="col with g-3 gutters">
-        <br>
-        <div *ngFor="let coment of coments.slice().reverse()">
-            <ul class="container">
-                <li class="row">
-                    <div class="col">
-                        <b>{{ coment.userName }}</b>
-                    </div>
-                    <div class="col-6">
-                        <p>{{ coment.userComent }}</p>
-                    </div>
-                    <div class="col">
-                        <ng-container *ngIf="name === coment.userName">
-                            <button class="btn btn-outline-danger" (click)="comentDelate(coment._id)">削除</button>
-                        </ng-container>
-                    </div>
-
-                </li>
-            </ul>
-            <ul class="container">
-                <p>{{ coment.timeData }}</p>
-            </ul>
-            <hr>
-
-        </div>
-            
-    </div>
-</div>
