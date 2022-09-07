@@ -24,7 +24,7 @@ export class TweetComponent implements OnInit {
     function reload() {
       _this.change()
     }
-    setInterval(reload, 2000);
+    // setInterval(reload, 2000);
   }
 
   reload() {
@@ -35,7 +35,8 @@ export class TweetComponent implements OnInit {
     const comentsObsevable = this.sharDateService.getComent()
     comentsObsevable.subscribe(
       (date) => {
-        this.coments = date
+        this.coments = date.reverse().slice()
+        
         
       },
       (err) => {},
@@ -46,7 +47,6 @@ export class TweetComponent implements OnInit {
   comentDelate($event: any) {
     return this.sharDateService.comentDelate($event).subscribe(
         (result) => {
-          console.log('success!');
         },
         (err: HttpErrorResponse) => {
             this.errors = err.error.errors
@@ -69,7 +69,8 @@ export class TweetComponent implements OnInit {
       )
   }
 
-
-
-
+  clearButton() {
+    const form: HTMLInputElement =<HTMLInputElement>document.getElementById('inputSuccess1')
+    form.value = ''
+  }
 }
