@@ -8,10 +8,7 @@ const userRoutes = require('./routes/user')
 
 const path = require('path')
 
-mongoose.connect(config.DB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-}) .then (
+mongoose.connect(config.DB_URI).then (
     () => {
     })
 
@@ -42,7 +39,6 @@ if(process.env.NODE_ENV === 'production') {
 
     })
 } else {
-    console.log(process.env.DB_URI);
 }
 
 
