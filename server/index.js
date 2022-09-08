@@ -8,7 +8,10 @@ const userRoutes = require('./routes/user')
 
 const path = require('path')
 
-mongoose.connect(config.DB_URI).then (
+mongoose.connect(config.DB_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}) .then (
     () => {
     })
 

@@ -24,7 +24,7 @@ export class TweetComponent implements OnInit {
     function reload() {
       _this.change()
     }
-    // setInterval(reload, 2000);
+    setInterval(reload, 2000);
   }
 
   reload() {
