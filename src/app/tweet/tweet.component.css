@@ -12,7 +12,11 @@
     padding-right: 15px;
     margin: 0;
 }
-.row-userName {
+.row__userName {
     display: flex;
     flex-wrap: wrap;
+}
+
+.coment__right {
+    text-align: end;
 }
