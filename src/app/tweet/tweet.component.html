@@ -3,15 +3,15 @@
         <br>
         <div *ngFor="let coment of coments">
             <ul class="container">
-                <li class="row-userName" [ngClass]="{'justify-content-end' : name === coment.userName}">
+                <li class="row__userName" [ngClass]="{'justify-content-end' : name === coment.userName}">
                     <div class="col-2" style="padding: 0;">
                         <b class="text-nowrap label label-default userName">{{ coment.userName }}</b>
                     </div>
                 </li>
             </ul>
             <ul class="container">
-                <li class="row"  [ngClass]="{'justify-content-end' : name === coment.userName}">
-                    <div class="col" style="padding-left: -15px;">
+                <li class="row" [ngClass]="{'justify-content-end' : name === coment.userName}">
+                    <div class="col-10" style="padding-left: -15px;" [ngClass]="{'coment__right' : name === coment.userName}">
                         <p class="label label-default coment">{{ coment.userComent }}</p>
                     </div>
                     <div class="col-2">
