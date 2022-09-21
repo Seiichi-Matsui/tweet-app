@@ -24,7 +24,7 @@ export class TweetComponent implements OnInit {
     function reload() {
       _this.change()
     }
-    setInterval(reload, 2000);
+    // setInterval(reload, 2000);
   }
 
   reload() {
@@ -35,9 +35,7 @@ export class TweetComponent implements OnInit {
     const comentsObsevable = this.sharDateService.getComent()
     comentsObsevable.subscribe(
       (date) => {
-        this.coments = date.reverse().slice()
-        
-        
+        this.coments = date.reverse().slice()        
       },
       (err) => {},
       () => {}
@@ -56,6 +54,7 @@ export class TweetComponent implements OnInit {
 
 
   coment(comentForm: any) {
+    
       this.sharDateService.addComent(comentForm.value.userComent).subscribe(
         
           (result) => {

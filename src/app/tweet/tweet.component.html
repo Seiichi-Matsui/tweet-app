@@ -12,7 +12,7 @@
             <ul class="container">
                 <li class="row" [ngClass]="{'justify-content-end' : name === coment.userName}">
                     <div class="col-10" style="padding-left: -15px;" [ngClass]="{'coment__right' : name === coment.userName}">
-                        <p class="label label-default coment wrap">{{ coment.userComent }}</p>
+                        <p class="label label-default coment wrap" style="text-transform: none;">{{ coment.userComent }}</p>
                     </div>
                     <div class="col-2">
                         <ng-container *ngIf="name === coment.userName">
@@ -49,10 +49,9 @@
                     value=""
                     placeholder="投稿する内容" 
                     aria-label="投稿内容" 
-                    class="form-control form-control-success tweet"
+                    class="form-control tweet"
                     id="inputSuccess1"
-                    aria-describedby="button-addon2"
-                    wrap="soft"
+                    wrap="hard"
                     >
                 </textarea>
             </div>
