@@ -21,3 +21,12 @@
 .coment__right {
     text-align: end;
 }
+
+.wrap {
+    word-break: break-all;
+    text-align: left;
+}
+
+.tweet {
+    word-break: break-all;
+}
