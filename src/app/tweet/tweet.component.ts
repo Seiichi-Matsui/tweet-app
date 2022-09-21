@@ -56,7 +56,6 @@ export class TweetComponent implements OnInit {
 
 
   coment(comentForm: any) {
-    
       this.sharDateService.addComent(comentForm.value.userComent).subscribe(
         
           (result) => {

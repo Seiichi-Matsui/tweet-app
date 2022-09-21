@@ -38,15 +38,6 @@ router.get('/:comentId', UserCtrl.authMiddleware, function(req, res) {
 router.post('', function(req, res) {
 const { userName, userComent, timeData } = req.body
 
-if(!userName) {
-    return res.status(422).send({errors: [{title: 'User error', detail: "ユーザー名を入力してください"}]})
-}
-
-if(!userComent) {
-    return res.status(422).send({errors: [{title: 'User error', detail: "コメントを入力してください"}]})
-}
-
-
 const coment = new Coment({userName, userComent, timeData})
     coment.save(function(err) {
         if(err) {
